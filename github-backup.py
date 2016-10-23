@@ -45,7 +45,10 @@ def main():
 		repo.user = gh.users.get(repo.owner.login)
 		fullrepo = gh.repos.get(repo.owner.login, repo.name)
 		if not (args.skip_forks and hasattr(fullrepo, 'parent') and hasattr(fullrepo, 'source')):
-			process_repo(repo, args)
+			try:
+				process_repo(repo, args)
+			except:
+				pass
 
 
 def init_parser():
