@@ -47,9 +47,9 @@ def main():
 		if not (args.skip_forks and hasattr(fullrepo, 'parent') and hasattr(fullrepo, 'source')):
 			try:
 				process_repo(repo, args)
-			except:
-				pass
-
+			except Exception as e:
+				with open("error.log", "a") as myfile:
+   	 				myfile.write("%s\n" % e)
 
 def init_parser():
 	"""
